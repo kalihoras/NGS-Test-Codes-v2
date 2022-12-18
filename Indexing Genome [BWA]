@@ -1,3 +1,4 @@
+#Version: 0.7.17-r1188
 
 #Index sequences (format = FASTA)
 bwa index -p [index name] [genome file]
