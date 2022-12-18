@@ -1,0 +1,13 @@
+ls *.fastq.gz | parallel \
+                    --jobs 12 \
+                    --plus \
+                    --progress  \
+                        'fastp \
+                            --html Fastp_Reports/{..}.html \
+                            --json Fastp_Reports/{..}.html \
+                            --report_title {..}_Quality_Filter \
+                            --qualified_quality_phred 20 \
+                            --thread 12 \
+                            --length_required 35 \
+                             -i {} \
+                             -o Clean_Data/{..}.clean.fq.gz'
