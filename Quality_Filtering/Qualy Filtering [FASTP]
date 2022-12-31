@@ -1,3 +1,4 @@
+#SE
 ls *.fastq.gz | parallel \
                     --jobs 12 \
                     --plus \
@@ -11,3 +12,23 @@ ls *.fastq.gz | parallel \
                             --length_required 35 \
                              -i {} \
                              -o Clean_Data/{..}.clean.fq.gz'
+
+#PE
+ls *.fq.gz | cut -d "_" -f 1 | sort | uniq | parallel \
+                     --jobs 12 \
+                     --plus \
+                     --progress  \
+                         'fastp \
+                         --in1 {}_R1.fq.gz \
+                         --in2 {}_R2.fq.gz \
+                         --out1 {}_R1.Clean.fq.gz \
+                         --out2 {}_R2.Clean.fq.gz \
+                         --qualified_quality_phred 30 \
+                         --unqualified_percent_limit 30  \
+                         --disable_adapter_trimming  \
+                         --complexity_threshold 10  \
+                         --thread 12 \
+                         --length_required 100  \
+                         --html Fastp_Reports/{}.html \
+                         --json Fastp_Reports/{}.html \
+                         --report_title {}_Quality_Filter'
