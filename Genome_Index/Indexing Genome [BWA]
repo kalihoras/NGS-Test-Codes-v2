@@ -2,11 +2,11 @@
 
 #Index sequences (format = FASTA)
 bwa index -p [index name] [genome file]
-bwa index -p SiirGenomeIndex Siirt_genome.fa
+bwa index -p SiirtGenomeIndex Siirt_genome.fa
 
 #Index sequences (format = FASTA) in background
 nohup bwa index -p [index name] [genome].fa >& BWAindex.out &
-nohup bwa index -p SiirGenomeIndex Siirt_genome.fa >& BWAindex.out &
+nohup bwa index -p SiirtGenomeIndex Siirt_genome.fa >& BWAindex.out &
 
 #Multifile index with parallel
 ls *.fa |
