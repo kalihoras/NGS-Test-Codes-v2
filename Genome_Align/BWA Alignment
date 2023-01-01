@@ -6,7 +6,7 @@ ls *.fq.gz | cut -d "_" -f 1 | sort | uniq | parallel \
                     --progress  \
                         'bwa mem \
                         	-t 8  \
-                        	-K 100000000  \
+                          -K 100000000  \
                           -R "@RG\tID:{}\tLB:{}\tPL:ILLUMINA\tPM:HISEQ\tSM:{}"  \
-                        	/PA_GENOME/PA_genome  \
+                          /PA_GENOME/PA_genome  \
                         	{}_R1.Clean.fq.gz {}_R2.Clean.fq.gz > {}.sam'
