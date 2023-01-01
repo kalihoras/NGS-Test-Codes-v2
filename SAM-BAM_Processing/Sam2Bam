@@ -1,0 +1,10 @@
+#samtools Version: 1.10 (using htslib 1.10.2-3ubuntu0.1)
+
+ls *.sam | parallel \
+    --jobs 6 \
+    --plus \
+    --progress  \
+        	' samtools view -@18 -S -b -h {}  > {.}.temp.bam 
+		        samtools sort -@18 {.}.temp.bam > {.}.bam
+		        rm {.}.temp.bam
+		        samtools index {.}.bam'
