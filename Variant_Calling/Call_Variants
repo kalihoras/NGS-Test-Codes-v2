@@ -1,0 +1,10 @@
+
+
+ls *_RD.bam | parallel \
+    --jobs 6 \
+    --plus \
+    --progress  \
+        	'gatk HaplotypeCaller \
+            -R Siirt_genome.fa \
+            -I {} \
+            -o {.}.vcf'
