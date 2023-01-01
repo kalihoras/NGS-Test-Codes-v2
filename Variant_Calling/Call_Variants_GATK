@@ -8,4 +8,3 @@ ls *_RD.bam | parallel \
             -R Siirt_genome.fa \
             -I {} \
             -o {.}.vcf'
-HaplotypeCaller
