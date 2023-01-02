@@ -6,6 +6,7 @@ ls *_RD.bam | parallel \
     --plus \
     --progress  \
         	'gatk HaplotypeCaller \
+            --dont-use-soft-clipped-bases \
             -R Siirt_genome.fa \
             -I {} \
             -O {.}.vcf'
