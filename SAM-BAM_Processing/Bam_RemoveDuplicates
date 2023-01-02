@@ -1,6 +1,6 @@
 
 ls *.bam | parallel \
-    --jobs 6 \
+    --jobs 36 \
     --plus \
     --progress  \
-        	'java -jar picard.jar MarkDuplicates  I={} O={.}_RD.bam M={.}.RD.metrices.txt'
+        	'picard MarkDuplicates  I={} O={.}_RD.bam M={.}.RD.metrices.txt'
