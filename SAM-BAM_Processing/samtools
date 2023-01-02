@@ -1,0 +1,3 @@
+
+ls *_RD.bam| parallel --progress --jobs 36 'samtools index {}'
+ls *_RD.bam | parallel --progress --jobs 36 'samtools view -b {} Pa_chr14.1 Pa_chr14.2 > {.}.PAchr14.bam'
