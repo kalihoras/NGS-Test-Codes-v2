@@ -1,4 +1,5 @@
 
+picard CreateSequenceDictionary R=Siirt_genome.fa O=Siirt_genome.dict
 
 ls *_RD.bam | parallel \
     --jobs 6 \
@@ -7,4 +8,4 @@ ls *_RD.bam | parallel \
         	'gatk HaplotypeCaller \
             -R Siirt_genome.fa \
             -I {} \
-            -o {.}.vcf'
+            -O {.}.vcf'
