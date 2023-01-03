@@ -6,7 +6,7 @@ ls *_RD.bam | parallel \
     --plus \
     --progress  \
         	'gatk HaplotypeCaller \
-        	        --java-options "-Xmx32G -XX:+UseParallelGC -XX:ParallelGCThreads=20" \
+        	       --java-options "-Xmx32G -XX:+UseParallelGC -XX:ParallelGCThreads=20" \
                     --dont-use-soft-clipped-bases \
                     -R Siirt_genome.fa \
                     -I {} \
