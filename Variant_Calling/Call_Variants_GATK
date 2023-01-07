@@ -25,3 +25,9 @@ ls *.PVchr14.vcf | parallel \
     --plus \
     --progress  \
         	'gatk SelectVariants -R Siirt_genome.fa -V {} --select-type-to-include INDEL -O {.}.indels.vcf'
+            
+ls *.snps.vcf | parallel \
+    --jobs 6 \
+    --plus \
+    --progress  \
+        	'gatk VariantFiltration -V {} -O {.}.filtered.vcf -R Siirt_genome.fa --filter-name "QD_filter" --filter-expression "QD < 2.0" --filter-name "FS_filter" --filter-expression "FS > 60.0" --filter-name "DP_filter" --filter-expression "DP < 4.0" --filter-name "SOR_filter" --filter-expression "QUAL < 30.0" --filter-name "ReadPosRankSum_filter" --filter-expression "ReadPosRankSum < -8.0"'
