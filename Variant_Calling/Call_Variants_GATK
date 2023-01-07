@@ -11,3 +11,17 @@ ls *_RD.bam | parallel \
                     -R Siirt_genome.fa \
                     -I {} \
                     -O {.}.vcf'
+
+
+ls *.vcf | parallel \
+    --jobs 6 \
+    --plus \
+    --progress  \
+        	'gatk SelectVariants -R Siirt_genome.fa -V {} --select-type-to-include SNP -O {.}.snps.vcf'
+            
+            
+ls *.PVchr14.vcf | parallel \
+    --jobs 6 \
+    --plus \
+    --progress  \
+        	'gatk SelectVariants -R Siirt_genome.fa -V {} --select-type-to-include INDEL -O {.}.indels.vcf'
