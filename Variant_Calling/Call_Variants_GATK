@@ -39,3 +39,5 @@ ls *.indels.vcf | parallel \
         	'gatk VariantFiltration -V {} -O {.}.filtered.vcf -R Siirt_genome.fa --filter-name "QD_filter" --filter-expression "QD < 2.0" --filter-name "FS_filter" --filter-expression "FS > 60.0" --filter-name "DP_filter" --filter-expression "DP < 4.0" --filter-name "SOR_filter" --filter-expression "SOR < 30.0"'
 
 ls *.vcf | parallel --jobs 6 --plus --progress  'gatk SelectVariants -R Siirt_genome.fa -V {} -L 14 -O {.}.PVchr14.snps.filtered.vcf'
+
+ls *.vcf | parallel --jobs 6 --plus --progress  'gatk IndexFeatureFile -I {}'
