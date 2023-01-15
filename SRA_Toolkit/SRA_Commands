@@ -1,0 +1,3 @@
+
+
+fastq-dump --split-3 *.sra
