@@ -1,0 +1,4 @@
+
+
+kraken2 --db silva --threads 12 --confidence 0.25  --report X.k2report \
+--report-minimizer-data --gzip-compressed --paired X_M1.fastq.gz X_M2.fastq.gz > X.kraken2
