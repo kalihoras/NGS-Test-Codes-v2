@@ -6,11 +6,11 @@ for file in *.csv; do echo "$file"$''"$(cat -- "$file")" > "$file"; done
 
 paste -d'\t' *.csv > merged_cov.csv
 
-
-
-
 for d in */ ; do
     cd $d
     mv * ..
     cd ..
 done
+
+
+awk '/^consensus*/' tomv.txt > tomv.cons.txt
