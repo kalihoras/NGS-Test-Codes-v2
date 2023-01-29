@@ -14,3 +14,6 @@ done
 
 
 awk '/^consensus*/' tomv.txt > tomv.cons.txt
+
+
+cat ./* > merged-file
