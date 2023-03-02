@@ -1,0 +1,6 @@
+ls *.fasta | parallel \
+                    --jobs 16 \
+                    --plus \
+                    --progress  \
+                        'bowtie2 -x Pa_Genome_Bowtie2/Pa_genome_wC --threads 8 -k 10 -f {} -S {}.sam'
+                        
