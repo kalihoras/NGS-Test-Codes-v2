@@ -2,15 +2,11 @@
 
 
 
-for file in *.csv; do echo "$file"$''"$(cat -- "$file")" > "$file"; done
 
-for file in *; 
-do 
-fr=$(head -n 1 $file)
-sed '1s/^/col0\t/; 2,$s/^/'"$fr"'\t/'  "$file" | tr -d '\r'  > "$file".csv;
-done
+
 
 paste -d'\t' *.csv > merged_cov.csv
+
 
 for d in */ ; do
     cd $d
@@ -22,7 +18,17 @@ done
 awk '/^consensus*/' tomv.txt > tomv.cons.txt
 
 
-cat ./* > merged.fna
+
 
 
 csplit --prefix=esra_aroma_2021_1 Esra_Aroma_Qtl_2021-1.csv "/^t/" "{*}"
+
+for file in *; 
+do 
+fr=$(head -n 1 $file)
+sed '1s/^/col0\t/; 2,$s/^/'"$fr"'\t/'  "$file" | tr -d '\r'  > "$file".csv;
+done
+
+for file in *.csv; do echo "$file"$''"$(cat -- "$file")" > "$file"; done
+
+cat ./* > merged.fna
