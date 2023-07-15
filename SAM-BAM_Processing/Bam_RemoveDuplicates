@@ -4,3 +4,12 @@ ls *.bam | parallel \
     --plus \
     --progress  \
         	'picard MarkDuplicates  I={} O={.}_RD.bam M={.}.RD.metrices.txt'
+
+
+
+
+ls *.bam | parallel \
+    --jobs 36 \
+    --plus \
+    --progress  \
+        	'picardCollectAlignmentSummaryMetrics R=/Cinsiyet_Proje_Burak/PA_GENOME/Pa_genome_wC.fasta I={} O={.}AlgnMtrc.txt'
