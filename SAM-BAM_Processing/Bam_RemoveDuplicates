@@ -8,8 +8,8 @@ ls *.bam | parallel \
 
 
 
-ls *.bam | parallel \
+ls *_RD.bam | parallel \
     --jobs 36 \
     --plus \
     --progress  \
-        	'picardCollectAlignmentSummaryMetrics R=/Cinsiyet_Proje_Burak/PA_GENOME/Pa_genome_wC.fasta I={} O={.}AlgnMtrc.txt'
+        	'picard CollectAlignmentSummaryMetrics R=/Cinsiyet_Proje_Burak/PA_GENOME/Pa_genome_wC.fasta I={} O={.}AlgnMtrc.txt'
