@@ -1,0 +1,1 @@
+ls *.bam | parallel --jobs 34 --plus --progress  'freebayes --vcf {}.FB.vcf --fasta-reference PA_GENOME/Pa_genome_wC.fasta --bam {} --report-monomorphic --min-alternate-count 2 --min-alternate-fraction 0.1'
